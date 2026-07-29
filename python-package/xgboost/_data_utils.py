@@ -707,9 +707,8 @@ class TransformedDf(ABC):
         temporary_buffers: List[Tuple],
     ) -> None:
         self.ref_categories = ref_categories
-        if ref_categories is not None and ref_categories.get_handle() is not None:
-            aif = ref_categories.get_handle()
-            self.ref_aif: Optional[int] = aif
+        if ref_categories is not None and not ref_categories.empty():
+            self.ref_aif: Optional[int] = ref_categories.get_handle()
         else:
             self.ref_aif = None
 
